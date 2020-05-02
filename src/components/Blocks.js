@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Box, Text, Grid } from "@chakra-ui/core";
+import { Grid } from "@chakra-ui/core";
+import BlocksModal from "./BlocksModal";
 
 class Blocks extends Component {
   render() {
@@ -9,6 +10,7 @@ class Blocks extends Component {
       totalDeaths,
       totalRecovered,
     } = this.props.total;
+    const { confirmed, active, recovered, deaths } = this.props.dates;
     const { deltaConfirmed, deltaDeaths, deltaRecovered } = this.props.delta;
     return (
       <Grid
@@ -16,71 +18,38 @@ class Blocks extends Component {
         templateColumns="repeat(auto-fit, minmax(200px,1fr))"
         gap={6}
       >
-        <Box
-          w="100%"
-          h="70"
-          borderRadius="lg"
-          boxShadow="lg"
-          bg="purple.100"
-          p={[5, 5, 5, 5]}
-        >
-          <Box fontSize="30px" color="purple.500">
-            <strong>{totalConfirmed}</strong>
-            <Text fontSize="16px">
-              (+
-              {deltaConfirmed})
-            </Text>
-            confirmed cases.
-          </Box>
-        </Box>
-        <Box
-          w="100%"
-          h="70"
-          boxShadow="lg"
-          borderRadius="lg"
-          bg="blue.100"
-          p={[5, 5, 5, 5]}
-        >
-          <Text fontSize="30px" color="blue.500">
-            <strong>{totalActive}</strong>
-            <br />
-            active cases.
-          </Text>
-        </Box>
-        <Box
-          w="100%"
-          h="70"
-          p={[5, 5, 5, 5]}
-          boxShadow="lg"
-          borderRadius="lg"
-          bg="green.100"
-        >
-          <Text fontSize="30px" color="green.500">
-            <strong>{totalRecovered}</strong>
-            <Box fontSize="16px">
-              (+
-              {deltaRecovered})
-            </Box>
-            recoveries.
-          </Text>
-        </Box>
-        <Box
-          w="100%"
-          h="70"
-          boxShadow="lg"
-          borderRadius="lg"
-          p={[5, 5, 5, 5]}
-          bg="red.100"
-        >
-          <Box fontSize="30px" color="red.500">
-            <strong>{totalDeaths}</strong>
-            <Text fontSize="16px">
-              (+
-              {deltaDeaths})
-            </Text>
-            deaths.
-          </Box>
-        </Box>
+        <BlocksModal
+          total={totalConfirmed}
+          delta={deltaConfirmed}
+          bColor="purple.100"
+          tColor="purple.500"
+          title="confirmed cases"
+          dates={confirmed}
+        />
+        <BlocksModal
+          total={totalActive}
+          delta={null}
+          bColor="blue.100"
+          tColor="blue.500"
+          title="active cases"
+          dates={active}
+        />
+        <BlocksModal
+          total={totalRecovered}
+          delta={deltaRecovered}
+          bColor="green.100"
+          tColor="green.500"
+          title="recoveries"
+          dates={recovered}
+        />
+        <BlocksModal
+          total={totalDeaths}
+          delta={deltaDeaths}
+          bColor="red.100"
+          tColor="red.500"
+          title="deaths"
+          dates={deaths}
+        />
       </Grid>
     );
   }
