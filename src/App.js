@@ -11,6 +11,7 @@ import {
 import Axios from "axios";
 import Blocks from "./components/Blocks";
 import "./App.css";
+import States from "./components/States";
 
 class App extends Component {
   state = {
@@ -22,6 +23,7 @@ class App extends Component {
     },
     delta: { deltaConfirmed: 0, deltaDeaths: 0, deltaRecovered: 0 },
     dates: { confirmed: [], active: [], recovered: [], deaths: [] },
+    statewise: [],
   };
 
   componentDidMount() {
@@ -30,6 +32,7 @@ class App extends Component {
       let r = [[], []];
       let d = [[], []];
       let a = [[], []];
+      console.log(res.data);
       res.data.cases_time_series.forEach((val, index) => {
         let dt = val.date.trim();
         dt = dt.substring(0, 6);
@@ -66,12 +69,13 @@ class App extends Component {
           recovered: r,
           deaths: d,
         },
+        statewise: res.data.statewise.slice(1),
       });
     });
   }
 
   render() {
-    const { dates, total, delta } = this.state;
+    const { dates, total, delta, statewise } = this.state;
     return (
       <ThemeProvider theme={theme}>
         <CSSReset />
@@ -81,14 +85,9 @@ class App extends Component {
           </Text>
         </Flex>
         <Blocks dates={dates} total={total} delta={delta} />
-        <Grid templateColumns="repeat(auto-fit, minmax(200px,1fr))" gap={6}>
+        <Grid templateColumns="repeat(auto-fit, minmax(350px,1fr))" gap={6}>
           <Box>
-            <Text>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Voluptates provident consequatur consectetur ullam vitae vero aut.
-              Vitae quisquam assumenda excepturi facilis, enim vel beatae,
-              aspernatur, sit optio ullam omnis porro!
-            </Text>
+            <States statewise={statewise} />
           </Box>
           <Box>
             <Text>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Line, Bar } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 import {
   useDisclosure,
   Text,
@@ -27,6 +27,13 @@ function BlocksModal(props) {
       setType("linear");
     }
   };
+  const handleChecked = () => {
+    if (type === "linear") {
+      return false;
+    } else {
+      return true;
+    }
+  };
   return (
     <>
       <PseudoBox
@@ -37,7 +44,8 @@ function BlocksModal(props) {
         p={[5, 5, 5, 5]}
         bg={props.bColor}
         onClick={onOpen}
-        _hover={{ cursor: "pointer" }}
+        transition="0.4s"
+        _hover={{ cursor: "pointer", boxShadow: "xl" }}
       >
         <Box fontSize="30px" color={props.tColor}>
           <strong>{props.total}</strong>
@@ -46,14 +54,24 @@ function BlocksModal(props) {
           {props.title}
         </Box>
       </PseudoBox>
-      <Modal isOpen={isOpen} size="xl" onClose={onClose}>
+      <Modal
+        isOpen={isOpen}
+        blockScrollOnMount={false}
+        size="xl"
+        onClose={onClose}
+      >
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>
             <Text textTransform="capitalize">{props.title}</Text>
             <Flex justify="center" align="center">
               <FormLabel htmlFor="logarithmic">Logarithmic</FormLabel>
-              <Switch onChange={changeType} value={type} id="logarithmic" />
+              <Switch
+                isChecked={handleChecked()}
+                onChange={changeType}
+                value={type}
+                id="logarithmic"
+              />
             </Flex>
           </ModalHeader>
           <ModalCloseButton />

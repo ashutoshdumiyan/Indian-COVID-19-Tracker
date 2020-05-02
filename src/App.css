@@ -2,3 +2,9 @@ section[role="dialog"] {
   border-radius: 0.25rem;
   max-width: 46rem;
 }
+
+@media only screen and (max-width: 740px) {
+  section[role="dialog"] {
+    max-width: 36rem;
+  }
+}
