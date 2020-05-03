@@ -50,6 +50,9 @@ export class States extends Component {
                 bg="purple.100"
                 color="purple.600"
                 borderRadius="md"
+                marginRight="5px"
+                flexGrow="1"
+                flexBasis="0"
                 p={[2, 2, 2, 2]}
               >
                 Confirmed
@@ -60,6 +63,9 @@ export class States extends Component {
                 bg="blue.100"
                 color="blue.600"
                 borderRadius="md"
+                marginRight="5px"
+                flexGrow="1"
+                flexBasis="0"
                 p={[2, 2, 2, 2]}
               >
                 Active
@@ -70,6 +76,9 @@ export class States extends Component {
                 bg="green.100"
                 color="green.600"
                 borderRadius="md"
+                marginRight="5px"
+                flexGrow="1"
+                flexBasis="0"
                 p={[2, 2, 2, 2]}
               >
                 Recovered
@@ -80,6 +89,9 @@ export class States extends Component {
                 bg="red.100"
                 color="red.600"
                 borderRadius="md"
+                marginRight="5px"
+                flexGrow="1"
+                flexBasis="0"
                 p={[2, 2, 2, 2]}
               >
                 Deaths

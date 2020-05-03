@@ -45,7 +45,11 @@ function BlocksModal(props) {
         bg={props.bColor}
         onClick={onOpen}
         transition="0.4s"
-        _hover={{ cursor: "pointer", boxShadow: "xl" }}
+        _hover={{
+          cursor: "pointer",
+          boxShadow: "xl",
+          transform: "translateY(-8px)",
+        }}
       >
         <Box fontSize="30px" color={props.tColor}>
           <strong>{props.total}</strong>
