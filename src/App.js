@@ -12,6 +12,8 @@ import Axios from "axios";
 import Blocks from "./components/Blocks";
 import "./App.css";
 import States from "./components/States";
+import Graphs from "./components/Graphs";
+import News from "./components/News";
 
 class App extends Component {
   state = {
@@ -24,6 +26,7 @@ class App extends Component {
     delta: { deltaConfirmed: 0, deltaDeaths: 0, deltaRecovered: 0 },
     dates: { confirmed: [], active: [], recovered: [], deaths: [] },
     statewise: [],
+    currentState: { name: "Andaman and Nicobar Islands", code: "an" },
   };
 
   componentDidMount() {
@@ -70,9 +73,15 @@ class App extends Component {
           deaths: d,
         },
         statewise: res.data.statewise.slice(1),
+        currentState: { name: "", code: "" },
       });
     });
   }
+
+  changeCurrentState = (newState) => {
+    console.log(newState);
+    this.setState({ ...this.state, currentState: newState });
+  };
 
   render() {
     const { dates, total, delta, statewise } = this.state;
@@ -85,17 +94,16 @@ class App extends Component {
           </Text>
         </Flex>
         <Blocks dates={dates} total={total} delta={delta} />
-        <Grid templateColumns="repeat(auto-fit, minmax(350px,1fr))" gap={6}>
+        <News />
+        <Grid templateColumns="repeat(auto-fit, minmax(400px,1fr))" gap={6}>
           <Box>
-            <States statewise={statewise} />
+            <States
+              changeCurrentState={this.changeCurrentState}
+              statewise={statewise}
+            />
           </Box>
           <Box>
-            <Text>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Voluptates provident consequatur consectetur ullam vitae vero aut.
-              Vitae quisquam assumenda excepturi facilis, enim vel beatae,
-              aspernatur, sit optio ullam omnis porro!
-            </Text>
+            <Graphs currentState={this.state.currentState} />
           </Box>
         </Grid>
       </ThemeProvider>

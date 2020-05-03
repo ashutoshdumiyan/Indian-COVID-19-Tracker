@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {
   Flex,
   Box,
+  Button,
   Accordion,
   AccordionItem,
   AccordionHeader,
@@ -21,6 +22,7 @@ export class States extends Component {
     });
     return arr;
   };
+
   displayStates = () => {
     let statearray = this.props.statewise;
     let ar = [];
@@ -35,6 +37,7 @@ export class States extends Component {
         deltarecovered,
         deaths,
         recovered,
+        statecode,
       } = element;
       ar.push(
         <AccordionItem key={index}>
@@ -99,6 +102,22 @@ export class States extends Component {
                 {deaths} {deltadeaths ? `[+${deltadeaths}]` : null}
               </Box>
             </Flex>
+            <Flex justify="flex-end" p={[3, 3, 3, 3]}>
+              <Button
+                rightIcon="arrow-forward"
+                variantColor="teal"
+                variant="outline"
+                onClick={() => {
+                  this.props.changeCurrentState({
+                    name: state,
+                    code: statecode.toLowerCase(),
+                  });
+                  document.querySelector("#graphs").scrollIntoView();
+                }}
+              >
+                View
+              </Button>
+            </Flex>
           </AccordionPanel>
         </AccordionItem>
       );
@@ -108,8 +127,14 @@ export class States extends Component {
 
   render() {
     return (
-      <Flex m={[5, 5, 5, 5]} direction="column" align="start" justify="center">
-        <Accordion width="100%" defaultIndex={[0]} allowMultiple>
+      <Flex
+        m={[5, 5, 5, 5]}
+        overflow="auto"
+        direction="column"
+        align="start"
+        justify="center"
+      >
+        <Accordion width="95%" defaultIndex={[]} allowMultiple="false">
           {this.displayStates()}
         </Accordion>
       </Flex>
