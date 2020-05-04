@@ -59,15 +59,16 @@ function News(props) {
             justify="space-between"
             key={index}
           >
-            <Box textAlign="left">
-              <Text fontWeight="500">District:</Text> {element.district}
-            </Box>
-            <Box textAlign="center">
-              <Text fontWeight="500">State:</Text> {element.state}
-            </Box>
-            <Box textAlign="center">
-              <Text fontWeight="500">Updated on:</Text> {element.lastupdated}
-            </Box>
+            <Flex fontWeight="500" justify="space-between">
+              <Box textAlign="left">District:</Box>
+              <Box textAlign="center">State:</Box>
+              <Box textAlign="center">Updated on:</Box>
+            </Flex>
+            <Flex justify="space-between">
+              <Box textAlign="left">{element.district}</Box>
+              <Box textAlign="center">{element.state}</Box>
+              <Box textAlign="center">{element.lastupdated}</Box>
+            </Flex>
           </Flex>
         );
       });
@@ -84,15 +85,16 @@ function News(props) {
               justify="space-between"
               key={index}
             >
-              <Box textAlign="left">
-                <Text fontWeight="500">District:</Text> {element.district}
-              </Box>
-              <Box textAlign="center">
-                <Text fontWeight="500">State:</Text> {element.state}
-              </Box>
-              <Box textAlign="center">
-                <Text fontWeight="500">Updated on:</Text> {element.lastupdated}
-              </Box>
+              <Flex fontWeight="500" justify="space-between">
+                <Box textAlign="left">District:</Box>
+                <Box textAlign="center">State:</Box>
+                <Box textAlign="center">Updated on:</Box>
+              </Flex>
+              <Flex justify="space-between">
+                <Box textAlign="left">{element.district}</Box>
+                <Box textAlign="center">{element.state}</Box>
+                <Box textAlign="center">{element.lastupdated}</Box>
+              </Flex>
             </Flex>
           );
         }
@@ -123,15 +125,16 @@ function News(props) {
             justify="space-between"
             key={index}
           >
-            <Box textAlign="left">
-              <Text fontWeight="500">District:</Text> {element.district}
-            </Box>
-            <Box textAlign="center">
-              <Text fontWeight="500">State:</Text> {element.state}
-            </Box>
-            <Box textAlign="center">
-              <Text fontWeight="500">Updated on:</Text> {element.lastupdated}
-            </Box>
+            <Flex fontWeight="500" justify="space-between">
+              <Box textAlign="left">District:</Box>
+              <Box textAlign="center">State:</Box>
+              <Box textAlign="center">Updated on:</Box>
+            </Flex>
+            <Flex justify="space-between">
+              <Box textAlign="left">{element.district}</Box>
+              <Box textAlign="center">{element.state}</Box>
+              <Box textAlign="center">{element.lastupdated}</Box>
+            </Flex>
           </Flex>
         );
       });
@@ -150,15 +153,16 @@ function News(props) {
               justify="space-between"
               key={index}
             >
-              <Box textAlign="left">
-                <Text fontWeight="500">District:</Text> {element.district}
-              </Box>
-              <Box textAlign="center">
-                <Text fontWeight="500">State:</Text> {element.state}
-              </Box>
-              <Box textAlign="center">
-                <Text fontWeight="500">Updated on:</Text> {element.lastupdated}
-              </Box>
+              <Flex fontWeight="500" justify="space-between">
+                <Box textAlign="left">District:</Box>
+                <Box textAlign="center">State:</Box>
+                <Box textAlign="center">Updated on:</Box>
+              </Flex>
+              <Flex justify="space-between">
+                <Box textAlign="left">{element.district}</Box>
+                <Box textAlign="center">{element.state}</Box>
+                <Box textAlign="center">{element.lastupdated}</Box>
+              </Flex>
             </Flex>
           );
         }
@@ -189,15 +193,16 @@ function News(props) {
             justify="space-between"
             key={index}
           >
-            <Box textAlign="left">
-              <Text fontWeight="500">District:</Text> {element.district}
-            </Box>
-            <Box textAlign="center">
-              <Text fontWeight="500">State:</Text> {element.state}
-            </Box>
-            <Box textAlign="center">
-              <Text fontWeight="500">Updated on:</Text> {element.lastupdated}
-            </Box>
+            <Flex fontWeight="500" justify="space-between">
+              <Box textAlign="left">District:</Box>
+              <Box textAlign="center">State:</Box>
+              <Box textAlign="center">Updated on:</Box>
+            </Flex>
+            <Flex justify="space-between">
+              <Box textAlign="left">{element.district}</Box>
+              <Box textAlign="center">{element.state}</Box>
+              <Box textAlign="center">{element.lastupdated}</Box>
+            </Flex>
           </Flex>
         );
       });
@@ -211,20 +216,22 @@ function News(props) {
             <Flex
               border="1px solid #333"
               borderRadius="md"
+              direction="column"
               margin="8px 0"
               padding="5px 3px"
               justify="space-between"
               key={index}
             >
-              <Box textAlign="left">
-                <Text fontWeight="500">District:</Text> {element.district}
-              </Box>
-              <Box textAlign="center">
-                <Text fontWeight="500">State:</Text> {element.state}
-              </Box>
-              <Box textAlign="center">
-                <Text fontWeight="500">Updated on:</Text> {element.lastupdated}
-              </Box>
+              <Flex fontWeight="500" justify="space-between">
+                <Box textAlign="left">District:</Box>
+                <Box textAlign="center">State:</Box>
+                <Box textAlign="center">Updated on:</Box>
+              </Flex>
+              <Flex justify="space-between">
+                <Box textAlign="left">{element.district}</Box>
+                <Box textAlign="center">{element.state}</Box>
+                <Box textAlign="center">{element.lastupdated}</Box>
+              </Flex>
             </Flex>
           );
         }

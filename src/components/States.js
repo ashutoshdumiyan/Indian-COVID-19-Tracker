@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import {
   Flex,
+  FormLabel,
+  Switch,
   Box,
   Button,
   Accordion,
@@ -11,6 +13,7 @@ import {
 } from "@chakra-ui/core";
 
 export class States extends Component {
+  state = { allow: false };
   sortOn = (arr, key) => {
     arr.sort(function (a, b) {
       if (a[key] < b[key]) {
@@ -40,7 +43,7 @@ export class States extends Component {
         statecode,
       } = element;
       ar.push(
-        <AccordionItem key={index} marginLeft="4px">
+        <AccordionItem key={index}>
           <AccordionHeader>
             <Box flex="1" textAlign="left">
               {state}
@@ -125,20 +128,34 @@ export class States extends Component {
     return ar;
   };
 
+  changeViewType = () => {
+    if (this.state.allow === false) {
+      this.setState({ allow: true });
+    } else {
+      this.setState({ allow: false });
+    }
+  };
+  handleMultipleChecked = () => {
+    return this.state.allow;
+  };
+
   render() {
     return (
-      <Flex
-        m={[5, 5, 5, 5]}
-        overflow="auto"
-        direction="column"
-        align="start"
-        justify="center"
-      >
+      <Flex m={[5, 5, 5, 5]} overflow="auto" direction="column" align="center">
+        <Box marginBottom="10px">
+          <FormLabel htmlFor="allow-multiple">Allow Multiple</FormLabel>
+          <Switch
+            id="allow-multiple"
+            isChecked={this.handleMultipleChecked()}
+            onChange={this.changeViewType}
+            value={this.state.allow}
+          />
+        </Box>
         <Accordion
           width="95%"
-          defaultIndex={[]}
-          allowMultiple="false"
-          paddingTop="3px"
+          defaultIndex={[0]}
+          allowToggle="true"
+          allowMultiple={this.state.allow}
         >
           {this.displayStates()}
         </Accordion>

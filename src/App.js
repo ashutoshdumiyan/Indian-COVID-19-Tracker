@@ -14,6 +14,7 @@ import "./App.css";
 import States from "./components/States";
 import Graphs from "./components/Graphs";
 import News from "./components/News";
+import Header from "./components/Header";
 
 class App extends Component {
   state = {
@@ -106,6 +107,7 @@ class App extends Component {
     return (
       <ThemeProvider theme={theme}>
         <CSSReset />
+        <Header />
         <Flex align="center" justify="center" p={[10, 10, 10, 10]}>
           <Text textTransform="uppercase" color="#a6c1ee" fontSize="40px">
             Coronavirus (COVID-19) Pandemic Stats
