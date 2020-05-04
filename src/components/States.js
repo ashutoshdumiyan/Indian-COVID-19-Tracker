@@ -40,7 +40,7 @@ export class States extends Component {
         statecode,
       } = element;
       ar.push(
-        <AccordionItem key={index}>
+        <AccordionItem key={index} marginLeft="4px">
           <AccordionHeader>
             <Box flex="1" textAlign="left">
               {state}
@@ -134,7 +134,12 @@ export class States extends Component {
         align="start"
         justify="center"
       >
-        <Accordion width="95%" defaultIndex={[]} allowMultiple="false">
+        <Accordion
+          width="95%"
+          defaultIndex={[]}
+          allowMultiple="false"
+          paddingTop="3px"
+        >
           {this.displayStates()}
         </Accordion>
       </Flex>

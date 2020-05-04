@@ -26,7 +26,7 @@ class App extends Component {
     delta: { deltaConfirmed: 0, deltaDeaths: 0, deltaRecovered: 0 },
     dates: { confirmed: [], active: [], recovered: [], deaths: [] },
     statewise: [],
-    currentState: { name: "Andaman and Nicobar Islands", code: "an" },
+    currentState: { name: "", code: "" },
     zones: { red: [], orange: [], green: [] },
   };
 

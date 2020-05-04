@@ -112,6 +112,11 @@ class Graphs extends Component {
   };
 
   renderGraphs = (code) => {
+    let len = this.state.dates.length;
+    let a = [];
+    for (let index = 0; index < len; index++) {
+      a.push(0);
+    }
     return (
       <>
         <Line
@@ -120,7 +125,7 @@ class Graphs extends Component {
             datasets: [
               {
                 label: "Confirmed",
-                data: this.state.allstates[code].cfd,
+                data: code === "xx" ? a : this.state.allstates[code].cfd,
                 borderColor: "#805ad5",
                 fill: true,
                 backgroundColor: "#e9d8fd",
@@ -144,7 +149,7 @@ class Graphs extends Component {
             datasets: [
               {
                 label: "Recovered",
-                data: this.state.allstates[code].cfd,
+                data: code === "xx" ? a : this.state.allstates[code].rcvd,
                 borderColor: "#38a169",
                 fill: true,
                 backgroundColor: "#c6f6d5",
@@ -168,7 +173,7 @@ class Graphs extends Component {
             datasets: [
               {
                 label: "Deaths",
-                data: this.state.allstates[code].cfd,
+                data: code === "xx" ? a : this.state.allstates[code].dead,
                 borderColor: "#e53e3e",
                 fill: true,
                 backgroundColor: "#fed7d7",
@@ -193,10 +198,10 @@ class Graphs extends Component {
     console.log(this.props);
     let { name, code } = this.props.currentState;
     if (name === "") {
-      name = "Andaman and Nicobar Islands";
+      name = "No state selected";
     }
     if (code === "") {
-      code = "an";
+      code = "xx";
     }
     if (this.state.loading) {
       return (
