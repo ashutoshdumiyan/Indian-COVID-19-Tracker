@@ -5,10 +5,22 @@ html {
 section[role="dialog"] {
   border-radius: 0.25rem;
   max-width: 46rem;
+  max-height: 80vh;
 }
+
+/* Toast */
+/* div[role="alert"] {
+  background-color: #63b3ed;
+} */
 
 @media only screen and (max-width: 740px) {
   section[role="dialog"] {
     max-width: 36rem;
+  }
+}
+
+@media only screen and (max-width: 656px) {
+  #zonesButton {
+    margin-top: 10px;
   }
 }

@@ -27,6 +27,7 @@ class App extends Component {
     dates: { confirmed: [], active: [], recovered: [], deaths: [] },
     statewise: [],
     currentState: { name: "Andaman and Nicobar Islands", code: "an" },
+    zones: { red: [], orange: [], green: [] },
   };
 
   componentDidMount() {
@@ -76,6 +77,23 @@ class App extends Component {
         currentState: { name: "", code: "" },
       });
     });
+    Axios.get("https://api.covid19india.org/zones.json").then((response) => {
+      let r = [];
+      let o = [];
+      let g = [];
+      console.log(response.data);
+      response.data.zones.forEach((element, index) => {
+        if (element.zone === "Red") {
+          r.push(element);
+        } else if (element.zone === "Orange") {
+          o.push(element);
+        } else {
+          g.push(element);
+        }
+      });
+      const obj = { red: r, orange: o, green: g };
+      this.setState({ ...this.state, zones: obj });
+    });
   }
 
   changeCurrentState = (newState) => {
@@ -94,7 +112,7 @@ class App extends Component {
           </Text>
         </Flex>
         <Blocks dates={dates} total={total} delta={delta} />
-        <News />
+        <News zones={this.state.zones} />
         <Grid templateColumns="repeat(auto-fit, minmax(400px,1fr))" gap={6}>
           <Box>
             <States

@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   useDisclosure,
+  useToast,
   Flex,
   Tabs,
   TabList,
   TabPanels,
   Tab,
   TabPanel,
+  Text,
+  Icon,
+  Input,
   Box,
   Button,
   Modal,
@@ -17,40 +21,263 @@ import {
   ModalBody,
   ModalCloseButton,
 } from "@chakra-ui/core";
-import Axios from "axios";
 
-function News() {
+function News(props) {
+  const [redFilter, setRedFilter] = React.useState("");
+  const [orangeFilter, setOrangeFilter] = React.useState("");
+  const [greenFilter, setGreenFilter] = React.useState("");
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { zones, setZones } = useState({ red: [], orange: [], green: [] });
+  const toast = useToast();
 
-  async function fetchMyAPI() {
-    let response = await Axios.get("https://api.covid19india.org/zones.json");
-    console.log(response.data);
-    let r = [];
-    let o = [];
-    let g = [];
-    response.data.zones.forEach((element, index) => {
-      if (element.zone === "Red") {
-        r.push(element);
-      } else if (element.zone === "Orange") {
-        o.push(element);
-      } else {
-        g.push(element);
-      }
-    });
-    return { red: r, orange: o, green: g };
-  }
+  const mounted = React.useRef();
+  React.useEffect(() => {
+    if (!mounted.current) {
+      mounted.current = true;
+    } else {
+      // do componentDidUpate logic
+      const ri = document.querySelector("#redInput");
+      const oi = document.querySelector("#orangeInput");
+      const gi = document.querySelector("#greenInput");
+      if (ri) ri.value = redFilter;
+      if (oi) oi.value = orangeFilter;
+      if (gi) gi.value = greenFilter;
+    }
+  });
 
-  useEffect(() => {
-    const obj = fetchMyAPI();
-    setZones(obj);
-  }, []);
+  const renderRedZones = () => {
+    let li = [];
+    const { red } = props.zones;
+    // console.log(redFilter);
+    if (redFilter === "") {
+      red.forEach((element, index) => {
+        li.push(
+          <Flex
+            border="1px solid #333"
+            borderRadius="md"
+            margin="8px 0"
+            padding="5px 3px"
+            justify="space-between"
+            key={index}
+          >
+            <Box textAlign="left">
+              <Text fontWeight="500">District:</Text> {element.district}
+            </Box>
+            <Box textAlign="center">
+              <Text fontWeight="500">State:</Text> {element.state}
+            </Box>
+            <Box textAlign="center">
+              <Text fontWeight="500">Updated on:</Text> {element.lastupdated}
+            </Box>
+          </Flex>
+        );
+      });
+    } else {
+      red.forEach((element, index) => {
+        // console.log(redFilter);
+        if (element.district.toLowerCase().includes(redFilter.toLowerCase())) {
+          li.push(
+            <Flex
+              border="1px solid #333"
+              borderRadius="md"
+              margin="8px 0"
+              padding="5px 3px"
+              justify="space-between"
+              key={index}
+            >
+              <Box textAlign="left">
+                <Text fontWeight="500">District:</Text> {element.district}
+              </Box>
+              <Box textAlign="center">
+                <Text fontWeight="500">State:</Text> {element.state}
+              </Box>
+              <Box textAlign="center">
+                <Text fontWeight="500">Updated on:</Text> {element.lastupdated}
+              </Box>
+            </Flex>
+          );
+        }
+      });
+    }
+    if (li.length === 0) {
+      li.push(
+        <Text key="0" margin="10px">
+          <Icon name="check" /> You are safe. Or search by district name.
+        </Text>
+      );
+    }
+    return li;
+  };
+
+  const renderOrangeZones = () => {
+    let li = [];
+    const { orange } = props.zones;
+    // console.log(orangeFilter);
+    if (orangeFilter === "") {
+      orange.forEach((element, index) => {
+        li.push(
+          <Flex
+            border="1px solid #333"
+            borderRadius="md"
+            margin="8px 0"
+            padding="5px 3px"
+            justify="space-between"
+            key={index}
+          >
+            <Box textAlign="left">
+              <Text fontWeight="500">District:</Text> {element.district}
+            </Box>
+            <Box textAlign="center">
+              <Text fontWeight="500">State:</Text> {element.state}
+            </Box>
+            <Box textAlign="center">
+              <Text fontWeight="500">Updated on:</Text> {element.lastupdated}
+            </Box>
+          </Flex>
+        );
+      });
+    } else {
+      orange.forEach((element, index) => {
+        // console.log(element.district.toLowerCase());
+        if (
+          element.district.toLowerCase().includes(orangeFilter.toLowerCase())
+        ) {
+          li.push(
+            <Flex
+              border="1px solid #333"
+              borderRadius="md"
+              margin="8px 0"
+              padding="5px 3px"
+              justify="space-between"
+              key={index}
+            >
+              <Box textAlign="left">
+                <Text fontWeight="500">District:</Text> {element.district}
+              </Box>
+              <Box textAlign="center">
+                <Text fontWeight="500">State:</Text> {element.state}
+              </Box>
+              <Box textAlign="center">
+                <Text fontWeight="500">Updated on:</Text> {element.lastupdated}
+              </Box>
+            </Flex>
+          );
+        }
+      });
+    }
+    if (li.length === 0) {
+      li.push(
+        <Text key="0" margin="10px">
+          <Icon name="check" /> You are safe. Or search by district name.
+        </Text>
+      );
+    }
+    return li;
+  };
+
+  const renderGreenZones = () => {
+    let li = [];
+    const { green } = props.zones;
+    // console.log(greenFilter);
+    if (greenFilter === "") {
+      green.forEach((element, index) => {
+        li.push(
+          <Flex
+            border="1px solid #333"
+            borderRadius="md"
+            margin="8px 0"
+            padding="5px 3px"
+            justify="space-between"
+            key={index}
+          >
+            <Box textAlign="left">
+              <Text fontWeight="500">District:</Text> {element.district}
+            </Box>
+            <Box textAlign="center">
+              <Text fontWeight="500">State:</Text> {element.state}
+            </Box>
+            <Box textAlign="center">
+              <Text fontWeight="500">Updated on:</Text> {element.lastupdated}
+            </Box>
+          </Flex>
+        );
+      });
+    } else {
+      green.forEach((element, index) => {
+        // console.log(element.district.toLowerCase());
+        if (
+          element.district.toLowerCase().includes(greenFilter.toLowerCase())
+        ) {
+          li.push(
+            <Flex
+              border="1px solid #333"
+              borderRadius="md"
+              margin="8px 0"
+              padding="5px 3px"
+              justify="space-between"
+              key={index}
+            >
+              <Box textAlign="left">
+                <Text fontWeight="500">District:</Text> {element.district}
+              </Box>
+              <Box textAlign="center">
+                <Text fontWeight="500">State:</Text> {element.state}
+              </Box>
+              <Box textAlign="center">
+                <Text fontWeight="500">Updated on:</Text> {element.lastupdated}
+              </Box>
+            </Flex>
+          );
+        }
+      });
+    }
+    if (li.length === 0) {
+      li.push(
+        <Text key="0" margin="10px">
+          <Icon name="check" /> You are safe. Or search by district name.
+        </Text>
+      );
+    }
+    return li;
+  };
+
+  const handleRedChange = () => {
+    const val = document.querySelector("#redInput").value;
+    setRedFilter(val);
+  };
+
+  const handleOrangeChange = () => {
+    const val = document.querySelector("#orangeInput").value;
+    setOrangeFilter(val);
+  };
+
+  const handleGreenChange = () => {
+    const val = document.querySelector("#greenInput").value;
+    setGreenFilter(val);
+  };
+
+  const handleRedEmptyChange = (e) => {
+    if (e.target.value === "") {
+      setRedFilter("");
+    }
+  };
+
+  const handleOrangeEmptyChange = (e) => {
+    if (e.target.value === "") {
+      setOrangeFilter("");
+    }
+  };
+
+  const handleGreenEmptyChange = (e) => {
+    if (e.target.value === "") {
+      setGreenFilter("");
+    }
+  };
 
   return (
     <Flex padding="0 5rem 2.5rem 5rem">
       <Box>
         <Button
-          rightIcon="arrow-forward"
+          rightIcon="external-link"
           variantColor="teal"
           variant="outline"
           marginRight="10px"
@@ -67,17 +294,24 @@ function News() {
           variantColor="teal"
           variant="outline"
           onClick={onOpen}
+          id="zonesButton"
         >
-          Zones
+          See District-Wise Zones
         </Button>
         <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
             <ModalHeader>Zones</ModalHeader>
             <ModalCloseButton />
-            <ModalBody>
+            <ModalBody overflow="auto">
               <Tabs variant="soft-rounded" variantColor="green">
-                <TabList>
+                <TabList
+                  position="sticky"
+                  padding="3px"
+                  top="-8px"
+                  zIndex="2"
+                  background="white"
+                >
                   <Tab _selected={{ color: "red.500", bg: "red.100" }}>Red</Tab>
                   <Tab _selected={{ color: "orange.500", bg: "orange.100" }}>
                     Orange
@@ -88,22 +322,89 @@ function News() {
                 </TabList>
                 <TabPanels marginTop="10px">
                   <TabPanel>
-                    <p>red!</p>
+                    <Flex>
+                      <Input
+                        marginRight="10px"
+                        placeholder="Search your city in red zones..."
+                        defaultValue={redFilter ? redFilter : null}
+                        id="redInput"
+                        onChange={handleRedEmptyChange}
+                      />
+                      <Button
+                        rightIcon="search"
+                        variantColor="teal"
+                        variant="outline"
+                        onClick={handleRedChange}
+                      >
+                        Search
+                      </Button>
+                    </Flex>
+                    {renderRedZones()}
                   </TabPanel>
                   <TabPanel>
-                    <p>orange!</p>
+                    <Flex>
+                      <Input
+                        marginRight="10px"
+                        placeholder="Search your city in orange zones..."
+                        defaultValue={orangeFilter ? orangeFilter : null}
+                        id="orangeInput"
+                        onChange={handleOrangeEmptyChange}
+                      />
+                      <Button
+                        rightIcon="search"
+                        variantColor="teal"
+                        variant="outline"
+                        onClick={handleOrangeChange}
+                      >
+                        Search
+                      </Button>
+                    </Flex>
+                    {renderOrangeZones()}
                   </TabPanel>
                   <TabPanel>
-                    <p>green!</p>
+                    <Flex>
+                      <Input
+                        marginRight="10px"
+                        placeholder="Search your city in green zones..."
+                        defaultValue={greenFilter ? greenFilter : null}
+                        id="greenInput"
+                        onChange={handleGreenEmptyChange}
+                      />
+                      <Button
+                        rightIcon="search"
+                        variantColor="teal"
+                        variant="outline"
+                        onClick={handleGreenChange}
+                      >
+                        Search
+                      </Button>
+                    </Flex>
+                    {renderGreenZones()}
                   </TabPanel>
                 </TabPanels>
               </Tabs>
             </ModalBody>
 
             <ModalFooter>
-              <Button variantColor="blue" mr={3} onClick={onClose}>
-                Close
-              </Button>
+              <Box border="1px solid #333" borderRadius="md" p={[2, 2, 2, 2]}>
+                <Button
+                  variantColor="blue"
+                  rightIcon="info-outline"
+                  onClick={() =>
+                    toast({
+                      title: "Attention!",
+                      isClosable: true,
+                      description:
+                        "You can only search districts.\nUnion territories such as Delhi, Chandigarh etc.\nare treated as states.",
+                      status: "info",
+                      duration: 8000,
+                    })
+                  }
+                >
+                  Help
+                </Button>
+                &nbsp;&nbsp; Info: You can search your district in each zone.
+              </Box>
             </ModalFooter>
           </ModalContent>
         </Modal>
