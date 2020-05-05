@@ -281,7 +281,7 @@ function News(props) {
   };
 
   return (
-    <Flex padding="0 5rem 2.5rem 5rem">
+    <Flex padding="0 5rem 2.5rem 5rem" id="news">
       <Box>
         <Button
           rightIcon="external-link"

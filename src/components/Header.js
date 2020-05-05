@@ -23,7 +23,9 @@ import {
   Text,
   Button,
   useDisclosure,
+  Divider,
 } from "@chakra-ui/core";
+import { Android, IOS, YouTube } from "../Icons";
 
 const MenuItems = ({ children }) => (
   <Text mt={{ base: 4, md: 0 }} mr={6} display="block">
@@ -115,6 +117,7 @@ const Header = (props) => {
                   <Tab>Symptoms</Tab>
                   <Tab>Prevention</Tab>
                   <Tab>Treatment</Tab>
+                  <Tab>Important Contacts</Tab>
                 </TabList>
                 <TabPanels>
                   <TabPanel>
@@ -154,6 +157,7 @@ const Header = (props) => {
                         nose or mouth.
                       </Text>
                       <br />
+                      <Divider />
                       <Text>
                         Source:&nbsp;&nbsp;
                         <Link
@@ -197,9 +201,72 @@ const Header = (props) => {
                         transmit the virus.
                       </Text>
                       <br />
-                      <Text>
+                      <Divider />
+                      <Flex>
+                        <Text margin="5px">
+                          <Link
+                            href="https://www.who.int/news-room/q-a-detail/q-a-coronaviruses#:~:text=symptoms"
+                            isExternal
+                          >
+                            Learn more on WHO{" "}
+                            <Icon name="external-link" mx="2px" />
+                          </Link>{" "}
+                        </Text>
+                        <br />
+                        <Text margin="5px">
+                          <Link
+                            href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public/myth-busters"
+                            isExternal
+                          >
+                            WHO myth busters{" "}
+                            <Icon name="external-link" mx="2px" />
+                          </Link>{" "}
+                        </Text>
+                      </Flex>
+                    </Box>
+                  </TabPanel>
+                  <TabPanel>
+                    <Box marginTop="15px">
+                      <Text>To prevent the spread of COVID-19:</Text>
+                      <List styleType="disc">
+                        <ListItem>
+                          Clean your hands often. Use soap and water, or an
+                          alcohol-based hand rub.
+                        </ListItem>
+                        <ListItem>
+                          Maintain a safe distance from anyone who is coughing
+                          or sneezing.
+                        </ListItem>
+                        <ListItem>
+                          Don’t touch your eyes, nose or mouth.
+                        </ListItem>
+                        <ListItem>Stay home if you feel unwell.</ListItem>
+                        <ListItem>
+                          If you have a fever, a cough, and difficulty
+                          breathing, seek medical attention. Call in advance.
+                        </ListItem>
+                        <ListItem>
+                          Follow the directions of your local authorities.
+                        </ListItem>
+                      </List>
+                      <br />
+                      <Text fontWeight="500" marginBottom="10px">
+                        Hear from AIIMS Director
+                      </Text>
+                      {YouTube}&nbsp;
+                      <Link
+                        paddingTop="2px"
+                        href="https://www.youtube.com/watch?v=E8-UoeWewFI&t=18s"
+                        isExternal
+                      >
+                        YouTube
+                      </Link>
+                      <br />
+                      <br />
+                      <Divider />
+                      <Text margin="5px">
                         <Link
-                          href="https://www.who.int/news-room/q-a-detail/q-a-coronaviruses#:~:text=symptoms"
+                          href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public"
                           isExternal
                         >
                           Learn more on WHO{" "}
@@ -209,10 +276,102 @@ const Header = (props) => {
                     </Box>
                   </TabPanel>
                   <TabPanel>
-                    <p>three!</p>
+                    <Box marginTop="15px">
+                      <Text>
+                        There is no specific treatment for coronavirus
+                        (COVID-19). People with COVID 19 should receive
+                        supportive care to relieve symptoms. Currently there is
+                        no vaccine to prevent the disease.
+                      </Text>
+                      <br />
+                      <Text>
+                        But we can do self care. If you feel sick you should
+                        rest, drink plenty of fluid, and eat nutritious food.
+                        Stay in a separate room from other family members, and
+                        use a dedicated bathroom if possible. Clean and
+                        disinfect frequently touched surfaces.
+                      </Text>
+                      <br />
+                      <Text>
+                        Talk to the people you trust, your family and friends if
+                        you ever feel sad during a crisis.
+                      </Text>
+                      <br />
+                      <Divider />
+                      <Text margin="5px">
+                        <Link
+                          href="https://www.who.int/news-room/q-a-detail/q-a-coronaviruses#:~:text=treatment"
+                          isExternal
+                        >
+                          Learn more on WHO{" "}
+                          <Icon name="external-link" mx="2px" />
+                        </Link>{" "}
+                      </Text>
+                    </Box>
                   </TabPanel>
                   <TabPanel>
-                    <p>four!</p>
+                    <Box marginTop="15px" lineHeight="200%">
+                      <Box>
+                        <Text fontWeight="500">Call helpline</Text>
+                        <Text>+91-11-23978046</Text>
+                      </Box>
+                      <Divider />
+                      <Box>
+                        <Text fontWeight="500">E-mail ID</Text>
+                        <Link href="mailto:ncov2019@gov.in">
+                          <Icon name="email" />
+                          &nbsp; ncov2019@gov.in
+                        </Link>
+                        &nbsp;/&nbsp;
+                        <Link href="mailto:ncov2019@gmail.com">
+                          <Icon name="email" />
+                          &nbsp; ncov2019@gmail.com
+                        </Link>
+                      </Box>
+                      <Divider />
+                      <Text fontWeight="500">
+                        Call helpline across multiple states
+                      </Text>
+                      <Link
+                        href="https://www.mohfw.gov.in/pdf/coronvavirushelplinenumber.pdf"
+                        isExternal
+                      >
+                        MoHFW <Icon name="external-link" mx="2px" />
+                      </Link>
+                    </Box>
+                    <Divider />
+                    <Box>
+                      <Text fontWeight="500" marginBottom="10px">
+                        Aarogya Setu App
+                      </Text>
+                      <Text>
+                        {Android}&nbsp;
+                        <Link
+                          paddingTop="2px"
+                          marginRight="10px"
+                          href="https://play.google.com/store/apps/details?id=nic.goi.aarogyasetu&hl=en_US"
+                          isExternal
+                        >
+                          &nbsp;Android
+                        </Link>
+                        {IOS}&nbsp;
+                        <Link
+                          paddingTop="2px"
+                          href="https://apps.apple.com/app/id1505825357"
+                          isExternal
+                        >
+                          &nbsp;iOS
+                        </Link>
+                      </Text>
+                    </Box>
+                    <Divider />
+                    <Box marginTop="20px">
+                      Data from :{" "}
+                      <Link href="https://www.mohfw.gov.in/" isExternal>
+                        Ministry of Health & Family Welfare{" "}
+                        <Icon name="external-link" />
+                      </Link>
+                    </Box>
                   </TabPanel>
                 </TabPanels>
               </Tabs>

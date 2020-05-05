@@ -215,7 +215,7 @@ class Graphs extends Component {
       );
     } else {
       return (
-        <Box id="graphs" m={[5, 5, 5, 5]}>
+        <Box m={[5, 5, 5, 5]}>
           <Flex
             justify="center"
             direction="column"

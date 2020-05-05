@@ -115,7 +115,7 @@ export class States extends Component {
                     name: state,
                     code: statecode.toLowerCase(),
                   });
-                  document.querySelector("#graphs").scrollIntoView();
+                  document.querySelector("#news").scrollIntoView();
                 }}
               >
                 View

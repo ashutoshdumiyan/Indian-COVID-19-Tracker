@@ -8,6 +8,10 @@ section[role="dialog"] {
   max-height: 80vh;
 }
 
+svg {
+  display: inline !important;
+}
+
 /* Toast */
 /* div[role="alert"] {
   background-color: #63b3ed;
