@@ -5,7 +5,6 @@ import {
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
   Link,
@@ -93,7 +92,7 @@ const Header = (props) => {
         <Button
           leftIcon="info"
           onClick={onOpen}
-          variantColor="teal.500"
+          variantColor="teal"
           border="1px"
         >
           Public Info
@@ -102,7 +101,7 @@ const Header = (props) => {
         <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>Modal Title</ModalHeader>
+            <ModalHeader>General information about COVID-19</ModalHeader>
             <ModalCloseButton />
             <ModalBody paddingBottom="25px" overflow="auto">
               <Tabs variant="soft-rounded" variantColor="green">
@@ -256,7 +255,7 @@ const Header = (props) => {
                       {YouTube}&nbsp;
                       <Link
                         paddingTop="2px"
-                        href="https://www.youtube.com/watch?v=E8-UoeWewFI&t=18s"
+                        href="https://www.youtube.com/watch?v=E8-UoeWewFI&t=10s"
                         isExternal
                       >
                         YouTube

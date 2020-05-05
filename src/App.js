@@ -37,7 +37,6 @@ class App extends Component {
       let r = [[], []];
       let d = [[], []];
       let a = [[], []];
-      console.log(res.data);
       res.data.cases_time_series.forEach((val, index) => {
         let dt = val.date.trim();
         dt = dt.substring(0, 6);
@@ -82,7 +81,6 @@ class App extends Component {
       let r = [];
       let o = [];
       let g = [];
-      console.log(response.data);
       response.data.zones.forEach((element, index) => {
         if (element.zone === "Red") {
           r.push(element);
@@ -98,7 +96,7 @@ class App extends Component {
   }
 
   changeCurrentState = (newState) => {
-    console.log(newState);
+    // console.log(newState);
     this.setState({ ...this.state, currentState: newState });
   };
 

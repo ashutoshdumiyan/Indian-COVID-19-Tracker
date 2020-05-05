@@ -195,7 +195,7 @@ class Graphs extends Component {
   };
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     let { name, code } = this.props.currentState;
     if (name === "") {
       name = "No state selected";

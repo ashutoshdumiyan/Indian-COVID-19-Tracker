@@ -11,9 +11,20 @@ import {
   AccordionPanel,
   AccordionIcon,
 } from "@chakra-ui/core";
+import District from "./District";
+import Axios from "axios";
 
 export class States extends Component {
-  state = { allow: false };
+  state = { allow: false, district: {} };
+
+  componentDidMount() {
+    Axios.get("https://api.covid19india.org/state_district_wise.json").then(
+      (res) => {
+        this.setState({ ...this.state, district: res.data });
+      }
+    );
+  }
+
   sortOn = (arr, key) => {
     arr.sort(function (a, b) {
       if (a[key] < b[key]) {
@@ -105,7 +116,8 @@ export class States extends Component {
                 {deaths} {deltadeaths ? `[+${deltadeaths}]` : null}
               </Box>
             </Flex>
-            <Flex justify="flex-end" p={[3, 3, 3, 3]}>
+            <Flex justify="space-around" p={[3, 3, 3, 3]}>
+              <District statename={state} alldata={this.state.district} />
               <Button
                 rightIcon="arrow-forward"
                 variantColor="teal"

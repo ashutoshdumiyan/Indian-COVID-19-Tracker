@@ -52,6 +52,7 @@ function News(props) {
       red.forEach((element, index) => {
         li.push(
           <Flex
+            direction="column"
             border="1px solid #333"
             borderRadius="md"
             margin="8px 0"
@@ -78,6 +79,7 @@ function News(props) {
         if (element.district.toLowerCase().includes(redFilter.toLowerCase())) {
           li.push(
             <Flex
+              direction="column"
               border="1px solid #333"
               borderRadius="md"
               margin="8px 0"
@@ -118,6 +120,7 @@ function News(props) {
       orange.forEach((element, index) => {
         li.push(
           <Flex
+            direction="column"
             border="1px solid #333"
             borderRadius="md"
             margin="8px 0"
@@ -146,6 +149,7 @@ function News(props) {
         ) {
           li.push(
             <Flex
+              direction="column"
               border="1px solid #333"
               borderRadius="md"
               margin="8px 0"
@@ -186,6 +190,7 @@ function News(props) {
       green.forEach((element, index) => {
         li.push(
           <Flex
+            direction="column"
             border="1px solid #333"
             borderRadius="md"
             margin="8px 0"
@@ -214,9 +219,9 @@ function News(props) {
         ) {
           li.push(
             <Flex
+              direction="column"
               border="1px solid #333"
               borderRadius="md"
-              direction="column"
               margin="8px 0"
               padding="5px 3px"
               justify="space-between"
