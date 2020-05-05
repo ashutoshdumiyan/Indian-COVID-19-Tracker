@@ -74,7 +74,7 @@ function BlocksModal(props) {
             </Flex>
           </ModalHeader>
           <ModalCloseButton />
-          <ModalBody>
+          <ModalBody overflow="auto">
             <Line
               data={{
                 labels: props.dates[0],

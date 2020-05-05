@@ -120,7 +120,7 @@ class App extends Component {
               statewise={statewise}
             />
           </Box>
-          <Box>
+          <Box id="graphs">
             <Graphs currentState={this.state.currentState} />
           </Box>
         </Grid>
