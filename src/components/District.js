@@ -43,7 +43,7 @@ function District(props) {
             margin="8px 0"
             padding="5px 3px"
             justify="space-between"
-            key={key.substring(0, 4)}
+            key={key}
           >
             <Flex justify="space-between">
               <Box>
@@ -72,7 +72,7 @@ function District(props) {
             margin="8px 0"
             padding="5px 3px"
             justify="space-between"
-            key={key.substring(0, 4)}
+            key={key}
           >
             <Flex fontWeight="500" justify="space-between">
               <Box textAlign="left">District:</Box>
@@ -105,7 +105,7 @@ function District(props) {
         View District-Wise Data
       </Button>
 
-      <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
+      <Modal preserveScrollBarGap isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>{props.statename}'s district data</ModalHeader>

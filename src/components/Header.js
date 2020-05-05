@@ -98,7 +98,7 @@ const Header = (props) => {
           Public Info
         </Button>
 
-        <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
+        <Modal preserveScrollBarGap isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
             <ModalHeader>General information about COVID-19</ModalHeader>

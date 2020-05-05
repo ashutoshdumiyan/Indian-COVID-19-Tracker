@@ -58,12 +58,7 @@ function BlocksModal(props) {
           {props.title}
         </Box>
       </PseudoBox>
-      <Modal
-        isOpen={isOpen}
-        blockScrollOnMount={false}
-        size="xl"
-        onClose={onClose}
-      >
+      <Modal isOpen={isOpen} preserveScrollBarGap size="xl" onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>

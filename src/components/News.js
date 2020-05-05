@@ -310,7 +310,7 @@ function News(props) {
         >
           See District-Wise Zones
         </Button>
-        <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
+        <Modal preserveScrollBarGap isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
             <ModalHeader>Zones</ModalHeader>
