@@ -64,6 +64,7 @@ const Header = (props) => {
         borderRadius="md"
         _hover={{ bg: "teal.500" }}
         onClick={handleToggle}
+        className="toHide"
       >
         <svg
           fill="white"
@@ -77,6 +78,7 @@ const Header = (props) => {
       </PseudoBox>
 
       <Box
+        className="toHide"
         display={{ sm: show ? "block" : "none", md: "flex" }}
         width={{ sm: "full", md: "auto" }}
         alignItems="center"
