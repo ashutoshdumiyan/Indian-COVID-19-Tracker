@@ -1,4 +1,4 @@
-# An Indian COVID-19 tracker
+# An Indian COVID-19 tracker [![Netlify Status](https://api.netlify.com/api/v1/badges/eedc6888-b87b-42a2-96a1-9f51c1cbe6cc/deploy-status)](https://app.netlify.com/sites/indiancovidtracker/deploys)
 
 Visit the website [here](https://indiancovidtracker.netlify.app/) and give any suggestions and report bugs.<br/>
 ### Note - Open the website in a desktop or tablet for best experience. It's not as nearly optimised for mobile. View it as a desktop site in mobile.
